@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.20" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const useChoice = localStorage.getItem('vuepress-color-scheme')
+      const systemStatus =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (useChoice === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (useChoice === 'dark' || systemStatus) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>VuePress</title><meta name="description" content="My first VuePress Site">
+    <link rel="preload" href="/assets/style-CjggSgMQ.css" as="style"><link rel="stylesheet" href="/assets/style-CjggSgMQ.css">
+    <link rel="modulepreload" href="/assets/app-Cxw-08cg.js"><link rel="modulepreload" href="/assets/404.html-DoNiadqY.js">
+    <link rel="prefetch" href="/assets/index.html-Cbvf_z3u.js" as="script"><link rel="prefetch" href="/assets/get-started.html-OhKs8bev.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-938d2462><main class="page" data-v-938d2462><div vp-content data-v-938d2462><h1 data-v-938d2462>404</h1><blockquote data-v-938d2462>Looks like we&#39;ve got some broken links.</blockquote><a class="route-link" href="/" data-v-938d2462>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-Cxw-08cg.js" defer></script>
+  </body>
+</html>
