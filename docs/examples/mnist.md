@@ -122,7 +122,7 @@ $$
 E = \frac{1}{2} \sum (t - y)^2
 $$
 
-You might notice that there is another possible loss function for classification, the sigmoid loss function. But in this case mse loss is sufficient enough.
+You might notice that there is another possible loss function for classification, the cross-entropy loss function. But in this case mse loss is sufficient enough.
 
 The neural net will do backpropogation to calculate dE/dw for each weight. Then, the step function will actually update the weights according to stochastic gradient descent:
 $$ \textbf{w} \leftarrow \textbf{w} - \eta \nabla E_n(\textbf{w})  $$
