@@ -1,33 +1,23 @@
 ---
 home: true
 title: Home
-heroImage: https://vuejs.press/images/hero.png
+heroImage: /images/swhappy.png
 actions:
   - text: Get Started
-    link: /get-started.html
+    link: /install/
     type: primary
 
-  - text: Introduction
-    link: https://vuejs.press/guide/introduction.html
+  - text: Explore examples
+    link: /examples/mnist
     type: secondary
-
 features:
-  - title: Simplicity First
-    details: Minimal setup with markdown-centered project structure helps you focus on writing.
-  - title: Vue-Powered
-    details: Enjoy the dev experience of Vue, use Vue components in markdown, and develop custom themes with Vue.
-  - title: Performant
-    details: VuePress generates pre-rendered static HTML for each page, and runs as an SPA once a page is loaded.
-  - title: Themes
-    details: Providing a default theme out of the box. You can also choose a community theme or create your own one.
-  - title: Plugins
-    details: Flexible plugin API, allowing plugins to provide lots of plug-and-play features for your site.
-  - title: Bundlers
-    details: Default bundler is Vite, while Webpack is also supported. Choose the one you like!
+  - title: Built from scratch
+    details: Algorithms implemented in a clear to understand way. Read the docs to learn more about how ML algorithms work.
+  - title: C++ native
+    details: All calculations and optimizations are done directly in C++ for maximal performance
+  - title: Expanding library
+    details: Wolf is in its very earliest stages of development. Contributions are welcome!
 
-footer: MIT Licensed | Copyright © 2018-present VuePress Community
+footer: Made with ❤️ for C++
 ---
-
-This is the content of home page. Check [Home Page Docs][default-theme-home] for more details.
-
 [default-theme-home]: https://vuejs.press/reference/default-theme/frontmatter.html#home-page

@@ -8,12 +8,21 @@ importers:
 
   .:
     devDependencies:
+      '@mathjax/src':
+        specifier: ^4.0.0
+        version: 4.0.0
       '@vuepress/bundler-vite':
         specifier: 2.0.0-rc.20
         version: 2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3)
+      '@vuepress/plugin-markdown-math':
+        specifier: 2.0.0-rc.118
+        version: 2.0.0-rc.118(@mathjax/src@4.0.0)(katex@0.16.25)(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))
       '@vuepress/theme-default':
         specifier: 2.0.0-rc.88
         version: 2.0.0-rc.88(markdown-it@14.1.0)(sass-embedded@1.93.3)(sass@1.93.3)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))
+      katex:
+        specifier: ^0.16.25
+        version: 0.16.25
       sass-embedded:
         specifier: ^1.86.0
         version: 1.93.3
@@ -199,6 +208,12 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.5':
     resolution: {integrity: sha512-cYQ9310grqxueWbl+WuIUIaiUaDcj7WOq5fVhEljNVgRfOUhY9fy2zTvfoqWsnebh8Sl70VScFbICvJnLKB0Og==}
 
+  '@mathjax/mathjax-newcm-font@4.0.0':
+    resolution: {integrity: sha512-kpsJgIF4FpWiwIkFgOPmWwy5GXfL25spmJJNg27HQxPddmEL8Blx0jn2BuU/nlwjM/9SnYpEfDrWiAMgLPlB8Q==}
+
+  '@mathjax/src@4.0.0':
+    resolution: {integrity: sha512-i7oYVLkHTskfTqxBzrbvcJN8ptGChWb6bx2LZsCySk7QWf61JqaMYX5N7M0qr8tnYqRmN5DDedkRda7wDuTdBA==}
+
   '@mdit-vue/plugin-component@2.1.4':
     resolution: {integrity: sha512-fiLbwcaE6gZE4c8Mkdkc4X38ltXh/EdnuPE1hepFT2dLiW6I4X8ho2Wq7nhYuT8RmV4OKlCFENwCuXlKcpV/sw==}
 
@@ -232,6 +247,15 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/helper@0.22.1':
+    resolution: {integrity: sha512-lDpajcdAk84aYCNAM/Mi3djw38DJq7ocLw5VOSMu/u2YKX3/OD37a6Qb59in8Uyp4SiAbQoSHa8px6hgHEpB5g==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-alert@0.16.0':
     resolution: {integrity: sha512-T+0BUVhKjp+Azp6sNdDbiZwydDIcZP6/NAg9uivPvcsDnI9u4lMRCdXI090xNJOdhHO3l/lOsoO//s+++MJNtA==}
     peerDependencies:
@@ -249,8 +273,41 @@ packages:
       markdown-it:
         optional: true
 
+  '@mdit/plugin-katex-slim@0.24.0':
+    resolution: {integrity: sha512-Bj69Qu7AsK4UkWkFIiRyJlVJ1g5S+d6/YZrDKSc0XabElCGgOhGf+f84h/aW4xbgky8sQBDE4Iutrfggg22TaA==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      katex: ^0.16.25
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      katex:
+        optional: true
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-mathjax-slim@0.24.0':
+    resolution: {integrity: sha512-ZFE2DC6LMPzHj/icSk+s0MeV0eWF42XT6oa2+NltfBOoNCQxgrJ57h4K77M2FDA79E7GkMFkJmmlM935j86JDQ==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@mathjax/src': ^4.0.0
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      '@mathjax/src':
+        optional: true
+      markdown-it:
+        optional: true
+
   '@mdit/plugin-tab@0.16.0':
     resolution: {integrity: sha512-c+/oT319DIWaMHyx5chueW8cy4pjC7E09QOg3qp86abTCdG2ljGLOlMAQbst5i/iH684QG/i8EJpB4oUeQdhkw==}
+    peerDependencies:
+      markdown-it: ^14.1.0
+    peerDependenciesMeta:
+      markdown-it:
+        optional: true
+
+  '@mdit/plugin-tex@0.22.2':
+    resolution: {integrity: sha512-iniJQ9BPZc8AGdLPRoyC+nDA0SoDSe+AETma4y2dOk/EbaSZMYgMaZO843mk5JV7eJkfRc6TWcTIE2CqY2/9Rg==}
+    engines: {node: '>= 18'}
     peerDependencies:
       markdown-it: ^14.1.0
     peerDependenciesMeta:
@@ -578,6 +635,11 @@ packages:
   '@vuepress/core@2.0.0-rc.20':
     resolution: {integrity: sha512-FcDvG+i35TGd0JZrOAPEUuXkCiVMdoohF1+rKRuIAknRX+SecaqN1RcrQlUEG1HBX+U2h4UGtOM1QkaLmQb8Mg==}
 
+  '@vuepress/helper@2.0.0-rc.118':
+    resolution: {integrity: sha512-g+v+KQBfalhYbAAmb6ivFwBgyoi6tQkyKwMQNEPEbaUnCeZl+tAEr7RvTNLX2ZCcKSZeSp3PKciYEtFseDzN2A==}
+    peerDependencies:
+      vuepress: 2.0.0-rc.26
+
   '@vuepress/helper@2.0.0-rc.86':
     resolution: {integrity: sha512-gWsH+m0EINYhx+aylFwSlPB9nHAmJwTqBZDttdm7y7GZxVkL5BtI9q+wN0/56UxXkATpVltZq/EfNuLpibr9WQ==}
     peerDependencies:
@@ -624,6 +686,18 @@ packages:
     resolution: {integrity: sha512-OEzs3XGhWcM/Tj8za9q7I/hQUTTeX0u++5Mv+gdUKWlm84RNN7qZh4/keBU3xI84pAARlx8PoKbdogKSAEfZEQ==}
     peerDependencies:
       vuepress: 2.0.0-rc.20
+
+  '@vuepress/plugin-markdown-math@2.0.0-rc.118':
+    resolution: {integrity: sha512-0uFbgMbAhrbnn625LSYs1GISr5LP+jUK49fgmU3m9YcpYNK/1X8pJ5uxQvDJqMdFN/umTvQpLxnzjFecoguB+g==}
+    peerDependencies:
+      '@mathjax/src': ^4.0.0
+      katex: ^0.16.21
+      vuepress: 2.0.0-rc.26
+    peerDependenciesMeta:
+      '@mathjax/src':
+        optional: true
+      katex:
+        optional: true
 
   '@vuepress/plugin-markdown-tab@2.0.0-rc.86':
     resolution: {integrity: sha512-dsUp7qHHTL6XKopMJMxj1Owuojf2cWvl0tXgNuDaKqcAlGMnFoNv3KZVBnKdO+nF7n4j9dT9gGZIgz2TBIKPgw==}
@@ -691,13 +765,30 @@ packages:
     peerDependencies:
       vue: ^3.5.0
 
+  '@vueuse/core@14.0.0':
+    resolution: {integrity: sha512-d6tKRWkZE8IQElX2aHBxXOMD478fHIYV+Dzm2y9Ag122ICBpNKtGICiXKOhWU3L1kKdttDD9dCMS4bGP3jhCTQ==}
+    peerDependencies:
+      vue: ^3.5.0
+
   '@vueuse/metadata@13.9.0':
     resolution: {integrity: sha512-1AFRvuiGphfF7yWixZa0KwjYH8ulyjDCC0aFgrGRz8+P4kvDFSdXLVfTk5xAN9wEuD1J6z4/myMoYbnHoX07zg==}
+
+  '@vueuse/metadata@14.0.0':
+    resolution: {integrity: sha512-6yoGqbJcMldVCevkFiHDBTB1V5Hq+G/haPlGIuaFZHpXC0HADB0EN1ryQAAceiW+ryS3niUwvdFbGiqHqBrfVA==}
 
   '@vueuse/shared@13.9.0':
     resolution: {integrity: sha512-e89uuTLMh0U5cZ9iDpEI2senqPGfbPRTHM/0AaQkcxnpqjkZqDYP8rpfm7edOz8s+pOCOROEy1PIveSW8+fL5g==}
     peerDependencies:
       vue: ^3.5.0
+
+  '@vueuse/shared@14.0.0':
+    resolution: {integrity: sha512-mTCA0uczBgurRlwVaQHfG0Ja7UdGe4g9mwffiJmvLiTtp1G4AQyIjej6si/k8c8pUwTfVpNufck+23gXptPAkw==}
+    peerDependencies:
+      vue: ^3.5.0
+
+  '@xmldom/xmldom@0.9.8':
+    resolution: {integrity: sha512-p96FSY54r+WJ50FIOsCOjyj/wavs8921hG5+kVMmZgKcvIKxMXHTrjNJvRgWa/zuX3B6t2lijLNFaOyuxUH+2A==}
+    engines: {node: '>=14.6'}
 
   ansi-regex@6.2.2:
     resolution: {integrity: sha512-Bq3SmSpyFHaWjPk8If9yc6svM8c56dB5BAtW4Qbw5jHTwwXXcTLoRMkpDJp6VL0XzlWaCHTXrkFURMYmD0sLqg==}
@@ -767,6 +858,10 @@ packages:
     resolution: {integrity: sha512-quS9HgjQpdaXOvsZz82Oz7uxtXiy6UIsIQcpBj7HRw2M63Skasm9qlDocAM7jNuaxdhpPU7c4kJN+gA5MCu4ww==}
     engines: {node: '>=18.17'}
 
+  cheerio@1.1.2:
+    resolution: {integrity: sha512-IkxPpb5rS/d1IiLbHMgfPuS0FgiWTtFIm/Nj+2woXDLTZ7fOT2eqzgYbdMlLweqlHbsZjxEChoVK+7iph7jyQg==}
+    engines: {node: '>=20.18.1'}
+
   chokidar@3.6.0:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
@@ -785,6 +880,14 @@ packages:
 
   colorjs.io@0.5.2:
     resolution: {integrity: sha512-twmVoizEW7ylZSN32OgKdXRmo1qg+wT5/6C3xu5b9QsWzSFAhHLn2xd8ro0diCsKfCj1RdaTP/nrcW+vAoQPIw==}
+
+  commander@14.0.0:
+    resolution: {integrity: sha512-2uM9rYjPvyq39NwLRqaiLtWHyDC1FvryJDa2ATTVims5YAS4PupsEQsDvP14FqhFr0P49CYDugi59xaxJlTXRA==}
+    engines: {node: '>=20'}
+
+  commander@8.3.0:
+    resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==}
+    engines: {node: '>= 12'}
 
   connect-history-api-fallback@2.0.0:
     resolution: {integrity: sha512-U73+6lQFmfiNPrYbXqr6kZ1i1wiRqXnp2nhMsINseWXO8lDau0LGEffJ8kQi4EjLZympVgRdvqjAgiZ1tgzDDA==}
@@ -945,6 +1048,9 @@ packages:
   hookable@5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}
 
+  htmlparser2@10.0.0:
+    resolution: {integrity: sha512-TwAZM+zE5Tq3lrEHvOlvwgj1XLWQCtaaibSN11Q+gGBAS7Y1uZSWwXXRe4iF6OXnaq1riyQAPFOBtYc77Mxq0g==}
+
   htmlparser2@9.1.0:
     resolution: {integrity: sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==}
 
@@ -1017,6 +1123,10 @@ packages:
   jsonfile@6.2.0:
     resolution: {integrity: sha512-FGuPw30AdOIUTRMC2OMRtQV+jkVj2cfPqSeWXv1NEAJ1qZ5zb1X6z1mFhbfOB/iy3ssJCD+3KuZ8r8C3uVFlAg==}
 
+  katex@0.16.25:
+    resolution: {integrity: sha512-woHRUZ/iF23GBP1dkDQMh1QBad9dmr8/PAwNA54VrSOVYgI12MAcE14TqnDdQOdzyEonGzMepYnqBMYdsoAr8Q==}
+    hasBin: true
+
   kind-of@6.0.3:
     resolution: {integrity: sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==}
     engines: {node: '>=0.10.0'}
@@ -1058,6 +1168,9 @@ packages:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
 
+  mhchemparser@4.2.1:
+    resolution: {integrity: sha512-kYmyrCirqJf3zZ9t/0wGgRZ4/ZJw//VwaRVGA75C4nhE60vtnIzhl9J9ndkX/h6hxSN7pjg/cE0VxbnNM+bnDQ==}
+
   micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
@@ -1068,6 +1181,9 @@ packages:
 
   mitt@3.0.1:
     resolution: {integrity: sha512-vKivATfr97l2/QBCYAkXYDbrIWPM2IIKEl7YPhjCvKlG3kE2gm+uBo6nEXK3M5/Ffh/FLpKExzOQ3JJoJGFKBw==}
+
+  mj-context-menu@0.9.1:
+    resolution: {integrity: sha512-ECPcVXZFRfeYOxb1MWGzctAtnQcZ6nRucE3orfkKX7t/KE2mlXO2K/bq4BcCGOuhdz3Wg2BZDy2S8ECK73/iIw==}
 
   ms@2.1.3:
     resolution: {integrity: sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA==}
@@ -1364,6 +1480,10 @@ packages:
     resolution: {integrity: sha512-1POYv7uv2gXoyGFpBCmpDVSNV74IfsWlDW216UPjbWufNf+bSU6GdbDsxdcxtfwb4xlI3yxzOTKClUosxARYrQ==}
     engines: {node: '>=0.10.0'}
 
+  speech-rule-engine@5.0.0-beta.1:
+    resolution: {integrity: sha512-arqcJpXEYRG9mQMxRCNd2xFERGvIvwvuhcnoXDw/SyeYNyJ5I9SUU5ft+BPw0M1rPpwl3Q+6ZeeYAcwGXTa6oQ==}
+    hasBin: true
+
   sprintf-js@1.0.3:
     resolution: {integrity: sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==}
 
@@ -1419,6 +1539,10 @@ packages:
   undici@6.22.0:
     resolution: {integrity: sha512-hU/10obOIu62MGYjdskASR3CUAiYaFTtC9Pa6vHyf//mAipSvSQg6od2CnJswq7fvzNS3zJhxoRkgNVaHurWKw==}
     engines: {node: '>=18.17'}
+
+  undici@7.16.0:
+    resolution: {integrity: sha512-QEg3HPMll0o3t2ourKwOeUAZ159Kn9mx5pnzHRQO8+Wixmh88YdZRiIwat0iNzNNXn0yoEtXJqFpyW7eM8BV7g==}
+    engines: {node: '>=20.18.1'}
 
   unicorn-magic@0.3.0:
     resolution: {integrity: sha512-+QBBXBCvifc56fsbuxZQ6Sic3wqqc3WWaqxs58gvJrcOuN83HGTCwz3oS5phzU9LthRNE9VrJCFCLUgHeeFnfA==}
@@ -1521,6 +1645,9 @@ packages:
     engines: {node: '>= 8'}
     hasBin: true
 
+  wicked-good-xpath@1.3.0:
+    resolution: {integrity: sha512-Gd9+TUn5nXdwj/hFsPVx5cuHHiF5Bwuc30jZ4+ronF1qHK5O7HD0sgmXWSEgwKquT3ClLoKPVbO6qGwVwLzvAw==}
+
   yoctocolors@2.1.2:
     resolution: {integrity: sha512-CzhO+pFNo8ajLM2d2IW/R93ipy99LWjtwblvC1RsoSUMZgyLbYFr221TnSNT7GjGdYui6P459mw9JH/g/zW2ug==}
     engines: {node: '>=18'}
@@ -1619,6 +1746,15 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.5': {}
 
+  '@mathjax/mathjax-newcm-font@4.0.0': {}
+
+  '@mathjax/src@4.0.0':
+    dependencies:
+      '@mathjax/mathjax-newcm-font': 4.0.0
+      mhchemparser: 4.2.1
+      mj-context-menu: 0.9.1
+      speech-rule-engine: 5.0.0-beta.1
+
   '@mdit-vue/plugin-component@2.1.4':
     dependencies:
       '@types/markdown-it': 14.1.2
@@ -1672,6 +1808,12 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
+  '@mdit/helper@0.22.1(markdown-it@14.1.0)':
+    dependencies:
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
   '@mdit/plugin-alert@0.16.0(markdown-it@14.1.0)':
     dependencies:
       '@types/markdown-it': 14.1.2
@@ -1684,9 +1826,32 @@ snapshots:
     optionalDependencies:
       markdown-it: 14.1.0
 
+  '@mdit/plugin-katex-slim@0.24.0(katex@0.16.25)(markdown-it@14.1.0)':
+    dependencies:
+      '@mdit/helper': 0.22.1(markdown-it@14.1.0)
+      '@mdit/plugin-tex': 0.22.2(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      katex: 0.16.25
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-mathjax-slim@0.24.0(@mathjax/src@4.0.0)(markdown-it@14.1.0)':
+    dependencies:
+      '@mdit/plugin-tex': 0.22.2(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      '@mathjax/src': 4.0.0
+      markdown-it: 14.1.0
+
   '@mdit/plugin-tab@0.16.0(markdown-it@14.1.0)':
     dependencies:
       '@mdit/helper': 0.16.0(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+    optionalDependencies:
+      markdown-it: 14.1.0
+
+  '@mdit/plugin-tex@0.22.2(markdown-it@14.1.0)':
+    dependencies:
       '@types/markdown-it': 14.1.2
     optionalDependencies:
       markdown-it: 14.1.0
@@ -2036,6 +2201,18 @@ snapshots:
       - supports-color
       - typescript
 
+  '@vuepress/helper@2.0.0-rc.118(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))':
+    dependencies:
+      '@vue/shared': 3.5.24
+      '@vueuse/core': 14.0.0(vue@3.5.24)
+      cheerio: 1.1.2
+      fflate: 0.8.2
+      gray-matter: 4.0.3
+      vue: 3.5.24
+      vuepress: 2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24)
+    transitivePeerDependencies:
+      - typescript
+
   '@vuepress/helper@2.0.0-rc.86(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))':
     dependencies:
       '@vue/shared': 3.5.24
@@ -2130,6 +2307,21 @@ snapshots:
       - markdown-it
       - typescript
       - vue
+
+  '@vuepress/plugin-markdown-math@2.0.0-rc.118(@mathjax/src@4.0.0)(katex@0.16.25)(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))':
+    dependencies:
+      '@mdit/plugin-katex-slim': 0.24.0(katex@0.16.25)(markdown-it@14.1.0)
+      '@mdit/plugin-mathjax-slim': 0.24.0(@mathjax/src@4.0.0)(markdown-it@14.1.0)
+      '@types/markdown-it': 14.1.2
+      '@vuepress/helper': 2.0.0-rc.118(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))
+      vue: 3.5.24
+      vuepress: 2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24)
+    optionalDependencies:
+      '@mathjax/src': 4.0.0
+      katex: 0.16.25
+    transitivePeerDependencies:
+      - markdown-it
+      - typescript
 
   '@vuepress/plugin-markdown-tab@2.0.0-rc.86(markdown-it@14.1.0)(vuepress@2.0.0-rc.20(@vuepress/bundler-vite@2.0.0-rc.20(@types/node@24.10.1)(sass-embedded@1.93.3)(sass@1.93.3))(vue@3.5.24))':
     dependencies:
@@ -2255,11 +2447,26 @@ snapshots:
       '@vueuse/shared': 13.9.0(vue@3.5.24)
       vue: 3.5.24
 
+  '@vueuse/core@14.0.0(vue@3.5.24)':
+    dependencies:
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 14.0.0
+      '@vueuse/shared': 14.0.0(vue@3.5.24)
+      vue: 3.5.24
+
   '@vueuse/metadata@13.9.0': {}
+
+  '@vueuse/metadata@14.0.0': {}
 
   '@vueuse/shared@13.9.0(vue@3.5.24)':
     dependencies:
       vue: 3.5.24
+
+  '@vueuse/shared@14.0.0(vue@3.5.24)':
+    dependencies:
+      vue: 3.5.24
+
+  '@xmldom/xmldom@0.9.8': {}
 
   ansi-regex@6.2.2: {}
 
@@ -2337,6 +2544,20 @@ snapshots:
       undici: 6.22.0
       whatwg-mimetype: 4.0.0
 
+  cheerio@1.1.2:
+    dependencies:
+      cheerio-select: 2.1.0
+      dom-serializer: 2.0.0
+      domhandler: 5.0.3
+      domutils: 3.2.2
+      encoding-sniffer: 0.2.1
+      htmlparser2: 10.0.0
+      parse5: 7.3.0
+      parse5-htmlparser2-tree-adapter: 7.1.0
+      parse5-parser-stream: 7.1.2
+      undici: 7.16.0
+      whatwg-mimetype: 4.0.0
+
   chokidar@3.6.0:
     dependencies:
       anymatch: 3.1.3
@@ -2361,6 +2582,10 @@ snapshots:
   cli-spinners@2.9.2: {}
 
   colorjs.io@0.5.2: {}
+
+  commander@14.0.0: {}
+
+  commander@8.3.0: {}
 
   connect-history-api-fallback@2.0.0: {}
 
@@ -2547,6 +2772,13 @@ snapshots:
 
   hookable@5.5.3: {}
 
+  htmlparser2@10.0.0:
+    dependencies:
+      domelementtype: 2.3.0
+      domhandler: 5.0.3
+      domutils: 3.2.2
+      entities: 6.0.1
+
   htmlparser2@9.1.0:
     dependencies:
       domelementtype: 2.3.0
@@ -2603,6 +2835,10 @@ snapshots:
     optionalDependencies:
       graceful-fs: 4.2.11
 
+  katex@0.16.25:
+    dependencies:
+      commander: 8.3.0
+
   kind-of@6.0.3: {}
 
   lilconfig@3.1.3: {}
@@ -2642,6 +2878,8 @@ snapshots:
 
   merge2@1.4.1: {}
 
+  mhchemparser@4.2.1: {}
+
   micromatch@4.0.8:
     dependencies:
       braces: 3.0.3
@@ -2650,6 +2888,8 @@ snapshots:
   mimic-function@5.0.1: {}
 
   mitt@3.0.1: {}
+
+  mj-context-menu@0.9.1: {}
 
   ms@2.1.3: {}
 
@@ -2919,6 +3159,12 @@ snapshots:
 
   speakingurl@14.0.1: {}
 
+  speech-rule-engine@5.0.0-beta.1:
+    dependencies:
+      '@xmldom/xmldom': 0.9.8
+      commander: 14.0.0
+      wicked-good-xpath: 1.3.0
+
   sprintf-js@1.0.3: {}
 
   stdin-discarder@0.2.2: {}
@@ -2962,6 +3208,8 @@ snapshots:
   undici-types@7.16.0: {}
 
   undici@6.22.0: {}
+
+  undici@7.16.0: {}
 
   unicorn-magic@0.3.0: {}
 
@@ -3025,5 +3273,7 @@ snapshots:
   which@2.0.2:
     dependencies:
       isexe: 2.0.0
+
+  wicked-good-xpath@1.3.0: {}
 
   yoctocolors@2.1.2: {}
