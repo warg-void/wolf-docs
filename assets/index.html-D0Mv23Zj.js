@@ -1,4 +1,4 @@
-import{_ as a,c as s,a as n,o as i}from"./app-Bve7a1G7.js";const l={};function t(r,e){return i(),s("div",null,[...e[0]||(e[0]=[n(`<h1 id="build-from-source" tabindex="-1"><a class="header-anchor" href="#build-from-source"><span>Build from Source</span></a></h1><p>To build from source, you will need cmake and a recent C++ compiler.</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code><span class="line">git clone https://github.com/warg-void/Wolf.git</span>
+import{_ as a,c as s,a as n,o as i}from"./app-9UBB8NpC.js";const l={};function t(r,e){return i(),s("div",null,[...e[0]||(e[0]=[n(`<h1 id="build-from-source" tabindex="-1"><a class="header-anchor" href="#build-from-source"><span>Build from Source</span></a></h1><p>To build from source, you will need cmake and a recent C++ compiler.</p><div class="language-text line-numbers-mode" data-highlighter="prismjs" data-ext="text"><pre><code><span class="line">git clone https://github.com/warg-void/Wolf.git</span>
 <span class="line">cd Wolf</span>
 <span class="line">cmake -B build -DBUILD_MNIST ON</span>
 <span class="line">cmake --build build</span>
