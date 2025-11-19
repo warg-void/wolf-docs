@@ -17,6 +17,7 @@ const sidebar = [
     // collapsed: true,
     children: [
       '/examples/mnist.md',
+      '/examples/save_and_load.md',
     ],
   },
 ]
