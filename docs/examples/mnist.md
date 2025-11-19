@@ -43,7 +43,7 @@ t stands for target, since y will stand for our model's prediction.
 
 Before we proceed to train our neural net, let's briefly go through how we model tensors. Internally, Tensor stores a vector of data, just like x_data, along with the rows and columns. Usually, rows refer to the batch size and cols refer to the feature dimension.
 
-Meanwhile, TensorView, is a non-owning version of Tensor, which contains the pointer to the data instead. The  TensorView API is faster and recommended because it avoids redundant CPU - GPUs transfers for example. 
+Meanwhile, TensorView, is a non-owning version of Tensor, which contains the pointer to the data instead. The  TensorView API is recommended because it avoids redundant CPU - GPUs transfers. 
 
 ```cpp
 class Tensor {
@@ -68,14 +68,19 @@ struct TensorView {
         Linear(128, 10)
     );
 
-    float lr = 0.05f;
-    size_t epochs = 5;          // Number of times the model is trained over whole train set (repeat)
+    float lr = 0.1f;
+    size_t epochs = 5;
     size_t batch_size = 5;
+    OptimVariant cfg = SGD{lr};
+    model.set_optimizer(cfg);
 
     std::mt19937 gen(std::random_device{}());
     BatchMaker batcher(n_train_samples);
 ```
-Here we call Sequential, which gives an easy way to add layers together. Our model has one hidden ReLU layer, and takes a 784-sized input to give a 10-sized output. This 10-sized output is one-hot encoded, so the first output is confident the neural net thinks the image is a '0' and so on.  
+Here we call Sequential, which gives an easy way to add layers together. Our model has one hidden ReLU layer, and takes a 784-sized input to give a 10-sized output. This 10-sized output is one-hot encoded, so the first output is confident the neural net thinks the image is a '0' and so on. 
+
+We set the optimizer to be stochastic gradient descent. There are also other optimizers like
+`Momentum{lr, momentum}` or `RMSProp{lr, alpha, eps}`
 
 BatchMaker is a helper class to make batches efficiently.
 
@@ -92,7 +97,7 @@ We train the model on the training dataset over 5 epochs, and a batch size of 5.
             TensorView y_batch = model.pred(x_batch);
             model.grad_loss(y_batch, t_batch);
             model.backward();
-            model.step(lr, current_bs);
+            model.step(current_bs);
 
             // End of core training loop
         }
@@ -139,6 +144,6 @@ We skip over the code in the example file that logs the runtime and loss over ep
 }
 
 ```
-After the training is complete, we simply evaluate the accuracy of our neural net on the test data! On my testings, the example program gets an accuracy of about 96.7% accuracy after 7 seconds of training. 
+After the training is complete, we simply evaluate the accuracy of our neural net on the test data! On my testings, the example program gets an accuracy of about 96.7% accuracy after 5 seconds of training. 
 
 [Link to full example file](https://github.com/warg-void/Wolf/blob/main/examples/mnistClassifier.cpp)
